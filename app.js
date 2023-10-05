@@ -17,13 +17,13 @@ const sendAttendanceRequestEnterAtOffice = async () => {
     )
 
     console.log(
-      'Berhasil absen datang di Kantor Stechoq Sawitsari',
+      'Berhasil absen datang di Kantor Stechoq Sawitsari\n',
       'Response:',
       response.data
     )
   } catch (error) {
     console.error(
-      'Gagal absen datang di Kantor Stechoq Babarsari',
+      'Gagal absen datang di Kantor Stechoq Sawitsari\n',
       'Error:',
       error.message
     )
@@ -47,13 +47,13 @@ const sendAttendanceRequestEnterOutsideOffice = async () => {
     )
 
     console.log(
-      'Berhasil absen datang di luar Kantor, UPNYK',
+      'Berhasil absen datang di luar Kantor, UPNYK\n',
       'Response:',
       response.data
     )
   } catch (error) {
     console.error(
-      'Gagal absen datang di luar Kantor, UPNYK',
+      'Gagal absen datang di luar Kantor, UPNYK\n',
       'Error:',
       error.message
     )
@@ -75,13 +75,13 @@ const sendAttendanceLeaveRequestAtOffice = async () => {
     )
 
     console.log(
-      'Berhasil absen pulang di Kantor Stechoq Sawitsari',
+      'Berhasil absen pulang di Kantor Stechoq Sawitsari\n',
       'Response:',
       response.data
     )
   } catch (error) {
     console.error(
-      'Gagal absen pulang di Kantor Stechoq Babarsari',
+      'Gagal absen pulang di Kantor Stechoq Sawitsari\n',
       'Error:',
       error.message
     )
@@ -90,7 +90,7 @@ const sendAttendanceLeaveRequestAtOffice = async () => {
 
 // Jadwalkan tugas dengan node-cron (senin sampai jumat jam 08.00 pagi)
 
-cron.schedule('57 7 * * 1,3,4', () => {
+cron.schedule('38 9 * * 1,3,4', () => {
   sendAttendanceRequestEnterAtOffice()
 })
 
