@@ -11,7 +11,9 @@ RUN npm install
  
 # Memindahkan seluruh berkas ke dalam direktori container
 COPY . .
-
+ 
+# Mengatur container untuk membuka dan menggunakan port 5000
+EXPOSE 10000
  
 # Perintah untuk menjalankan aplikasi
 CMD [ "node", "app.js" ]
