@@ -2,7 +2,65 @@ const axios = require('axios')
 const cron = require('node-cron')
 
 // Fungsi untuk mengirim permintaan POST ke endpoint yang diinginkan
-const sendAttendanceRequest = async () => {
+const sendAttendanceRequestEnterAtOffice = async () => {
+  try {
+    const requestBody = {
+      employeeId: '6020595',
+      password: '6020595',
+      latitude: -7.7568951,
+      longitude: 110.3895945
+    }
+
+    const response = await axios.post(
+      'https://stepup.srv4.stechoq.com/api/attendance/presence/attend/enter',
+      requestBody
+    )
+
+    console.log(
+      'Berhasil absen datang di Kantor Stechoq Sawitsari',
+      'Response:',
+      response.data
+    )
+  } catch (error) {
+    console.error(
+      'Gagal absen datang di Kantor Stechoq Babarsari',
+      'Error:',
+      error.message
+    )
+  }
+}
+
+const sendAttendanceRequestEnterOutsideOffice = async () => {
+  try {
+    const requestBody = {
+      employeeId: '6020595',
+      password: '6020595',
+      latitude: -7.7823905,
+      longitude: 110.4157975,
+      userIsOutstation: 1,
+      userOutstationDescription: 'UPN "Veteran" Yogyakarta Kampus 2 Babarsari'
+    }
+
+    const response = await axios.post(
+      'https://stepup.srv4.stechoq.com/api/attendance/presence/attend/enter',
+      requestBody
+    )
+
+    console.log(
+      'Berhasil absen datang di luar Kantor, UPNYK',
+      'Response:',
+      response.data
+    )
+  } catch (error) {
+    console.error(
+      'Gagal absen datang di luar Kantor, UPNYK',
+      'Error:',
+      error.message
+    )
+  }
+}
+
+const sendAttendanceLeaveRequestAtOffice = async () => {
   try {
     const requestBody = {
       employeeId: '6020595',
@@ -16,15 +74,30 @@ const sendAttendanceRequest = async () => {
       requestBody
     )
 
-    console.log('Response:', response.data)
+    console.log(
+      'Berhasil absen pulang di Kantor Stechoq Sawitsari',
+      'Response:',
+      response.data
+    )
   } catch (error) {
-    console.error('Error:', error.message)
+    console.error(
+      'Gagal absen pulang di Kantor Stechoq Babarsari',
+      'Error:',
+      error.message
+    )
   }
 }
 
 // Jadwalkan tugas dengan node-cron (senin sampai jumat jam 08.00 pagi)
+
+cron.schedule('57 7 * * 1,3,4', () => {
+  sendAttendanceRequestEnterAtOffice()
+})
+
+cron.schedule('58 7 * * 2,5', () => {
+  sendAttendanceRequestEnterOutsideOffice()
+})
+
 cron.schedule('1 17 * * 1-5', () => {
-  // Mengirim permintaan POST pada jadwal yang ditentukan
-  sendAttendanceRequest()
-  //   console.log('Attendance request sent. menit 30')
+  sendAttendanceLeaveRequestAtOffice()
 })
