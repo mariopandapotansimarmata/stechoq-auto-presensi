@@ -1,0 +1,16 @@
+node_modules/
+logs/
+files/
+tmp/
+fileUpload/
+fileExcel/
+public/img/brand/logo/*
+package-lock.json
+npm-debug.log
+*.sock
+*.conf.json
+*.conf.js
+~$*
+config/keys/*
+!config/keys/.placePEMHere
+.idea/
