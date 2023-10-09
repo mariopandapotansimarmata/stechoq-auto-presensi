@@ -2,6 +2,36 @@ const axios = require('axios')
 const cron = require('node-cron')
 
 // Fungsi untuk mengirim permintaan POST ke endpoint yang diinginkan
+
+function getTimeNow() {
+  let currentdate = new Date()
+  const weekday = [
+    'Minggu',
+    'Senin',
+    'Selasa',
+    'Rabu',
+    'Kamis',
+    'Jumat',
+    'Sabtu'
+  ]
+  let datetime =
+    weekday[currentdate.getDay()] +
+    ' @ ' +
+    currentdate.getHours() +
+    ':' +
+    currentdate.getMinutes() +
+    ':' +
+    currentdate.getSeconds() +
+    ' ' +
+    currentdate.getDate() +
+    '/' +
+    (currentdate.getMonth() + 1) +
+    '/' +
+    currentdate.getFullYear()
+
+  return datetime
+}
+
 const sendAttendanceRequestEnterAtOffice = async () => {
   try {
     const requestBody = {
@@ -18,13 +48,13 @@ const sendAttendanceRequestEnterAtOffice = async () => {
 
     console.log(
       'Berhasil absen datang di Kantor Stechoq Sawitsari\n',
-      'Response:',
+      getTimeNow() + '\n' + 'Response:',
       response.data
     )
   } catch (error) {
     console.error(
       'Gagal absen datang di Kantor Stechoq Sawitsari\n',
-      'Error:',
+      getTimeNow() + '\n' + 'Error:',
       error.message
     )
   }
@@ -48,13 +78,13 @@ const sendAttendanceRequestEnterOutsideOffice = async () => {
 
     console.log(
       'Berhasil absen datang di luar Kantor, UPNYK\n',
-      'Response:',
+      getTimeNow() + '\n' + 'Response:',
       response.data
     )
   } catch (error) {
     console.error(
       'Gagal absen datang di luar Kantor, UPNYK\n',
-      'Error:',
+      getTimeNow() + '\n' + 'Error:',
       error.message
     )
   }
@@ -76,13 +106,13 @@ const sendAttendanceLeaveRequestAtOffice = async () => {
 
     console.log(
       'Berhasil absen pulang di Kantor Stechoq Sawitsari\n',
-      'Response:',
+      getTimeNow() + '\n' + 'Response:',
       response.data
     )
   } catch (error) {
     console.error(
       'Gagal absen pulang di Kantor Stechoq Sawitsari\n',
-      'Error:',
+      getTimeNow() + '\n' + 'Error:',
       error.message
     )
   }
@@ -90,7 +120,7 @@ const sendAttendanceLeaveRequestAtOffice = async () => {
 
 // Jadwalkan tugas dengan node-cron (senin sampai jumat jam 08.00 pagi)
 
-cron.schedule('38 9 * * 1,3,4', () => {
+cron.schedule('57 7 * * 1,3,4', () => {
   sendAttendanceRequestEnterAtOffice()
 })
 
