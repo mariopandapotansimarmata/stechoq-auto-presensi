@@ -123,10 +123,10 @@ cron.schedule('57 7 * * 1,3,4', () => {
   sendAttendanceRequestEnterAtOffice()
 })
 
-cron.schedule('36 8 * * 2,5', () => {
+cron.schedule('58 7 * * 2,5', () => {
   sendAttendanceRequestEnterOutsideOffice()
 })
 
-cron.schedule('1 17 * * 1-5', () => {
+cron.schedule('2 17 * * 1-5', () => {
   sendAttendanceLeaveRequestAtOffice()
 })
