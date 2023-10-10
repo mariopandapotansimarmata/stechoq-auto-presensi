@@ -16,19 +16,18 @@ function getTimeNow() {
   ]
   let datetime =
     weekday[currentdate.getDay()] +
-    ' @ ' +
-    currentdate.getHours() +
-    ':' +
-    currentdate.getMinutes() +
-    ':' +
-    currentdate.getSeconds() +
     ' ' +
     currentdate.getDate() +
     '/' +
     (currentdate.getMonth() + 1) +
     '/' +
-    currentdate.getFullYear()
-
+    currentdate.getFullYear() +
+    '   ' +
+    currentdate.getHours() +
+    ':' +
+    currentdate.getMinutes() +
+    ':' +
+    currentdate.getSeconds()
   return datetime
 }
 
@@ -124,7 +123,7 @@ cron.schedule('57 7 * * 1,3,4', () => {
   sendAttendanceRequestEnterAtOffice()
 })
 
-cron.schedule('58 7 * * 2,5', () => {
+cron.schedule('36 8 * * 2,5', () => {
   sendAttendanceRequestEnterOutsideOffice()
 })
 
