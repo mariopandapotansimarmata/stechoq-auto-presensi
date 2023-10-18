@@ -1,19 +1,13 @@
-FROM node:16
- 
+FROM node:16.20.2-alpine3.18
+
 # Membuat direktori aplikasi pada container
 WORKDIR /app
  
-# Memindahkan dependency aplikasi ke working directory
-COPY package*.json ./
- 
+ # Memindahkan seluruh berkas ke dalam direktori container
+COPY . .
+
 # Menginstall dependency
 RUN npm install
- 
-# Memindahkan seluruh berkas ke dalam direktori container
-COPY . .
- 
-# Mengatur container untuk membuka dan menggunakan port 5000
-EXPOSE 10000
  
 # Perintah untuk menjalankan aplikasi
 CMD [ "node", "app.js" ]
