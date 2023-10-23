@@ -48,13 +48,13 @@ const sendAttendanceRequestEnterAtOffice = async () => {
     console.log(
       'Berhasil absen datang di Kantor Stechoq Sawitsari\n',
       getTimeNow() + '\n' + 'Response:',
-      response.data
+      response.data + '\n'
     )
   } catch (error) {
     console.error(
       'Gagal absen datang di Kantor Stechoq Sawitsari\n',
       getTimeNow() + '\n' + 'Error:',
-      error.message
+      error.message + '\n'
     )
   }
 }
@@ -78,13 +78,13 @@ const sendAttendanceRequestEnterOutsideOffice = async () => {
     console.log(
       'Berhasil absen datang di luar Kantor, UPNYK\n',
       getTimeNow() + '\n' + 'Response:',
-      response.data
+      response.data + '\n'
     )
   } catch (error) {
     console.error(
       'Gagal absen datang di luar Kantor, UPNYK\n',
       getTimeNow() + '\n' + 'Error:',
-      error.message
+      error.message + '\n'
     )
   }
 }
@@ -106,13 +106,13 @@ const sendAttendanceLeaveRequestAtOffice = async () => {
     console.log(
       'Berhasil absen pulang di Kantor Stechoq Sawitsari\n',
       getTimeNow() + '\n' + 'Response:',
-      response.data
+      response.data + '\n'
     )
   } catch (error) {
     console.error(
       'Gagal absen pulang di Kantor Stechoq Sawitsari\n',
       getTimeNow() + '\n' + 'Error:',
-      error.message
+      error.message + '\n'
     )
   }
 }
